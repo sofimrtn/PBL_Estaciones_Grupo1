@@ -1,0 +1,17 @@
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\bin\Debug\PBL_Grupo1.exe.config
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\bin\Debug\PBL_Grupo1.exe
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\bin\Debug\PBL_Grupo1.pdb
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1.csprojAssemblyReference.cache
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\MainWindow.g.cs
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\App.g.cs
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1_MarkupCompile.cache
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1_MarkupCompile.lref
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\MainWindow.baml
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1.g.resources
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1.Properties.Resources.resources
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1.csproj.GenerateResource.cache
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1.csproj.CoreCompileInputs.cache
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1.exe
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\PBL_Grupo1.pdb
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\Simple Styles.baml
+C:\Users\Estudiante\source\repos\PBL_Grupo1\PBL_Grupo1\obj\Debug\App.baml
