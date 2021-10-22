@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GestionDatosEstacion1.cs" />
     <Compile Include="SCADA.xaml.cs">
       <DependentUpon>SCADA.xaml</DependentUpon>
     </Compile>
