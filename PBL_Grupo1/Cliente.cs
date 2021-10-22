@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -14,13 +15,15 @@ namespace PBL_Grupo1
         private Socket clientTCP = null;
         private IPEndPoint ipep = null;
         private bool connected;
+        private delegadoProcesar procesar;
 
-        //private Thread hiloCliente;
+        private Thread hiloCliente;
 
-        public Cliente(String ip, Int32 port)
+        public Cliente(String ip, Int32 port, delegadoProcesar delegadoProcesarMensaje)
         {
             try
             {
+                procesar = delegadoProcesarMensaje;
                 IPAddress direction = IPAddress.Parse(ip);
                 ipep = new IPEndPoint(direction, port);
 
@@ -28,8 +31,8 @@ namespace PBL_Grupo1
                 clientTCP.SendTimeout = 500;
                 clientTCP.ReceiveTimeout = 1000;
 
-                //hiloCliente = new Thread(new ThreadStart(this.rutina));
-                //hiloCliente.Start();
+                hiloCliente = new Thread(new ThreadStart(this.rutina));
+                hiloCliente.Start();
             }
             catch (Exception ex)
             {
@@ -149,35 +152,36 @@ namespace PBL_Grupo1
             }
         }
 
-        //private void rutina()
-        //{
-        //    try
-        //    {
-        //        byte[] data = new byte[100];
-        //        byte[] res;
-        //        int dimRes;
+        private void rutina()
+        {
+            try
+            {
+                byte[] data = new byte[100];
+                byte[] res;
+                int dimRes;
 
-        //        while (connected)
-        //        {
-        //            int aux = this.receiveData(data, data.Length);
+                while (connected)
+                {
+                    int aux = this.receiveData(data, data.Length);
 
-        //            if (aux > 0)
-        //            {
-        //                //proceso información
-        //            }
-        //            else if (aux == -1)
-        //            {
-        //                //no hay datos enviados 
-        //            }
-        //        }
-        //    }
-        //    catch (SocketException ex)
-        //    {
-
-
-        //    }
+                    if (aux > 0)
+                    {
+                        procesar(data, aux);
+                    }
+                    else
+                    {
+                        //TODO: qué hacer aquí
+                    }
+                    
+                }
+            }
+            catch (SocketException ex)
+            {
 
 
-        //}
+            }
+
+
+        }
     }
 }

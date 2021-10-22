@@ -55,9 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="3D_SCADA.xaml.cs">
+      <DependentUpon>3D_SCADA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionDatosEstacion1.cs" />
     <Compile Include="SCADA.xaml.cs">
       <DependentUpon>SCADA.xaml</DependentUpon>
     </Compile>
+    <Page Include="3D_SCADA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\style\Animation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
