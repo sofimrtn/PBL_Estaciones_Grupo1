@@ -55,6 +55,61 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SCADA.xaml.cs">
+      <DependentUpon>SCADA.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Assets\style\Animation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\style\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\MetroDark\MetroDark.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\MetroDark\MetroDark.MSControls.Toolkit.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\MetroDark\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\MetroDark\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\MetroDark\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\Metro\Metro.MSControls.Core.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\Metro\Metro.MSControls.Toolkit.Implicit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\Metro\Styles.Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\Metro\Styles.WPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\themes\Metro\Theme.Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Comunicacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,10 +119,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cliente.cs" />
+    <Compile Include="Comunicacion.xaml.cs">
+      <DependentUpon>Comunicacion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SCADA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +160,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\FrostedGlassBehavior.dll" />
+    <Resource Include="Assets\ico\Apps-scan-monitor.ico" />
+    <Resource Include="Assets\img\icons\b-Add User Male-96.png" />
+    <Resource Include="Assets\img\icons\b-Broken Link-64.png" />
+    <Resource Include="Assets\img\icons\b-Contacts-32.png" />
+    <Resource Include="Assets\img\icons\b-Edit User Male-96.png" />
+    <Resource Include="Assets\img\icons\b-Left_50.png" />
+    <Resource Include="Assets\img\icons\b-Link-50.png" />
+    <Resource Include="Assets\img\icons\b-Link-96.png" />
+    <Resource Include="Assets\img\icons\b-Login-64 Black.png" />
+    <Resource Include="Assets\img\icons\b-Logout Rounded Left-64 Black.png" />
+    <Resource Include="Assets\img\icons\b-Multiply-32.png" />
+    <Resource Include="Assets\img\icons\b-Multiply-64.png" />
+    <Resource Include="Assets\img\icons\b-Reset-32.png" />
+    <Resource Include="Assets\img\icons\b-Reset-64.png" />
+    <Resource Include="Assets\img\icons\b-Right_50.png" />
+    <Resource Include="Assets\img\icons\b-User Groups-96.png" />
+    <Resource Include="Assets\img\icons\bl-Link-64.png" />
+    <Resource Include="Assets\img\icons\bl_Electrical Sensor-32.png" />
+    <Resource Include="Assets\img\icons\bl_Electrical Sensor-64.png" />
+    <Resource Include="Assets\img\icons\bl_Electrical Sensor-96.png" />
+    <Resource Include="Assets\img\icons\g-Checkmark-96.png" />
+    <Resource Include="Assets\img\icons\gr-user-Profil-Image.png" />
+    <Resource Include="Assets\img\icons\r-Broken Link-96.png" />
+    <Resource Include="Assets\img\icons\r-Multiply-96.png" />
+    <Resource Include="Assets\img\icons\w-Add User Male-96.png" />
+    <Resource Include="Assets\img\icons\w-Admin Settings Male-64.png" />
+    <Resource Include="Assets\img\icons\w-Available Updates-32.png" />
+    <Resource Include="Assets\img\icons\w-Available Updates-64.png" />
+    <Resource Include="Assets\img\icons\w-customer-64.png" />
+    <Resource Include="Assets\img\icons\w-Edit User Male-64.png" />
+    <Resource Include="Assets\img\icons\w-Ellipsis Filled-50.png" />
+    <Resource Include="Assets\img\icons\w-Ethernet On Filled-100.png" />
+    <Resource Include="Assets\img\icons\w-Login-64.png" />
+    <Resource Include="Assets\img\icons\w-Logout Rounded Left-64.png" />
+    <Resource Include="Assets\img\icons\w-Manual-64.png" />
+    <Resource Include="Assets\img\icons\w-Menu-64.png" />
+    <Resource Include="Assets\img\icons\w-Ok-64.png" />
+    <Resource Include="Assets\img\icons\w-Report Card-64.png" />
+    <Resource Include="Assets\img\icons\w-Services-64.png" />
+    <Resource Include="Assets\img\icons\w-Settings-32.png" />
+    <Resource Include="Assets\img\icons\w-Settings-48.png" />
+    <Resource Include="Assets\img\icons\w-Settings-64.png" />
+    <Resource Include="Assets\img\icons\w-Toggle On-64.png" />
+    <Resource Include="Assets\img\icons\w-Under Computer-32.png" />
+    <Resource Include="Assets\img\icons\w-User Menu Male-64.png" />
+    <Resource Include="Assets\img\icons\w-Workstation Filled-100.png" />
+    <Resource Include="Assets\img\samples\abstract1.png" />
+    <Resource Include="Assets\img\samples\abstract2.png" />
+    <Resource Include="Assets\img\samples\line-sample.png" />
+    <Resource Include="Assets\img\samples\machineBackground.jpg" />
+    <Resource Include="Assets\img\samples\robotArm.png" />
+    <Resource Include="Assets\img\samples\settingsCark.jpg" />
+    <Resource Include="Assets\themes\MetroDark\HowToApplyTheme.txt" />
+    <Resource Include="Assets\themes\Metro\HowToApplyTheme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
