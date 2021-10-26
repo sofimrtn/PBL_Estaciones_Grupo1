@@ -18,7 +18,7 @@
                     <TextBox x:Name="txtB_Port" HorizontalAlignment="Left" Height="23" Margin="271.059,74.659,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
                     <Button x:Name="btn_Conectar" Content="Conectar" HorizontalAlignment="Left" Height="24.834" Margin="31.662,113.677,0,0" VerticalAlignment="Top" Width="93.377" Click="btn_Conectar_Click"/>
-                    <TextBox x:Name="txtB_Hex" HorizontalAlignment="Left" Height="68.364" Margin="30.392,202.265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="359.397"/>
+                    <TextBox x:Name="txtB_Hex" HorizontalAlignment="Left" Height="96" Margin="30,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="695"/>
 
                     <Label Content="Datos recibidos:" HorizontalAlignment="Left" Margin="30.392,171.305,0,0" VerticalAlignment="Top"/>
 

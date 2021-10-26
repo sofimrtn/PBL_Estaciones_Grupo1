@@ -154,34 +154,64 @@ namespace PBL_Grupo1
 
         private void rutina()
         {
-            try
+            bool cont = true;
+            byte[] data = new byte[100];
+            //byte[] res;
+            //int dimRes;
+
+            Thread.Sleep(100);
+
+            while (connected)
             {
-                byte[] data = new byte[100];
-                byte[] res;
-                int dimRes;
-
-                while (connected)
+                try
                 {
-                    int aux = this.receiveData(data, data.Length);
+                    while (connected && cont)
+                    {
+                        Console.WriteLine("he entrado bien");
+                        int aux = this.receiveData(data, data.Length);
+                        Console.WriteLine("Recibi bien");
 
-                    if (aux > 0)
-                    {
-                        procesar(data, aux);
+                        if (aux > 0)
+                        {
+                            procesar(data, aux);
+                        }
+                        else if (aux == -1)
+                        {
+                            cont = false;
+                        }
                     }
-                    else
+                }
+                catch (SocketException ex)
+                {
+                    if(ex.SocketErrorCode == SocketError.Interrupted)
                     {
-                        //TODO: qué hacer aquí
+                        cont = false;
+                    } else
+                    {
+                        MessageBox.Show("Error al recibir datos");
+
+                        throw;
                     }
-                    
+
+                } catch (Exception ex)
+                {
+                    MessageBox.Show("Error general al recibir datos");
+
+                    throw;
                 }
             }
-            catch (SocketException ex)
+
+            cierraCliente();
+        }
+
+        private void cierraCliente()
+        {
+            connected = false;
+            if (!hiloCliente.Join(1000))
             {
-
-
+                hiloCliente.Abort();
             }
-
-
+            return;
         }
     }
 }
