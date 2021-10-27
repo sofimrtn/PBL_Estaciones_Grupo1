@@ -13,14 +13,14 @@ namespace PBL_Grupo1
     class GestionDatosEstacion1
     {
         private delegadoMensajes imprimirMensajeRecibido;
-        private delegadoPintar pinta;
+        private List<Delegate> pinta;
         private delegadoDespintar despinta;
 
-        public GestionDatosEstacion1(delegadoMensajes _datos, delegadoPintar _tag, delegadoDespintar _tag2)
+        public GestionDatosEstacion1(delegadoMensajes _datos, List<Delegate> _tag)
         {
             imprimirMensajeRecibido = _datos;
             pinta = _tag;
-            despinta = _tag2;
+            //despinta = _tag2;
         }
 
         public void procesar(byte[] datos, int dim)
@@ -37,35 +37,11 @@ namespace PBL_Grupo1
             BitArray bitsbasicModuleInputs = new BitArray(new byte[] { basicModuleInputs });
             imprimirMensajeRecibido(new byte[] { basicModuleInputs, basicModuleOutputs }, bitsbasicModuleInputs.Length);
 
-            bool bitMarcha = bitsbasicModuleInputs[0];
-            bool bitParo = bitsbasicModuleInputs[1];
-            bool bitRearme = bitsbasicModuleInputs[3];
 
-            if (bitMarcha.Equals(true))
+            for(int i=0; i<4; i++) //CHECKKK
             {
-                pinta("marcha");
-            }else {
-                despinta("marcha");
+                pinta[i].DynamicInvoke(bitsbasicModuleInputs[i]);
             }
-
-            if (bitParo)
-            {
-                pinta("paro");
-            }
-            else
-            {
-                despinta("paro");
-            }
-
-            if (bitRearme)
-            {
-                pinta("rearme");
-            }
-            else
-            {
-                despinta("rearme");
-            }
-
         }
     }
 }

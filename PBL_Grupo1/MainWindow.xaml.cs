@@ -17,18 +17,28 @@ namespace PBL_Grupo1
 {
     public delegate void delegadoMensajes(byte[] datos, int dim);
     public delegate void delegadoProcesar(byte[] datos, int dim);
-    public delegate void delegadoPintar(string tag);
+    public delegate void delegadoPintar(bool tag);
     public delegate void delegadoDespintar(string tag);
+
+
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private delegadoMensajes delegadoImprimeMensajes;
         private delegadoProcesar delegadoProcesarMensaje;
-        private delegadoPintar delegadoPintar;
+
+
+        private delegadoPintar delPintarMarcha;
+        private delegadoPintar delPintarParo;
+        private delegadoPintar delPintarRearme;
+        private delegadoPintar delPintaAuto;
+
+
         private delegadoDespintar delegadoDespintar;
+
+        private List<Delegate> listPintar;
 
         private GestionDatosEstacion1 gestorEstacion1;
         private Cliente client = null;
@@ -37,10 +47,16 @@ namespace PBL_Grupo1
         {
             InitializeComponent();
             delegadoImprimeMensajes = new delegadoMensajes(muestraDatosRecibidos);
-            delegadoPintar = new delegadoPintar(pintaDatosRecibidos);
+            delPintarMarcha = new delegadoPintar(pintaMarcha);
+            delPintarParo = new delegadoPintar(pintaParo);
+            delPintarRearme = new delegadoPintar(pintaRearme);
+            delPintaAuto = new delegadoPintar(pintaMarcha); //CHECKKK
+
             delegadoDespintar = new delegadoDespintar(despintaDatosRecibidos);
 
-            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, delegadoPintar, delegadoDespintar);
+            listPintar = new List<Delegate> {delPintarMarcha, delPintarParo, delPintaAuto, delPintarRearme};
+
+            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, listPintar);
 
             delegadoProcesarMensaje = new delegadoProcesar(gestorEstacion1.procesar);
 
@@ -78,36 +94,75 @@ namespace PBL_Grupo1
             }
         }
 
-        private void pintaDatosRecibidos(string tag)
+        //private void pintaDatosRecibidos(string tag)
+        //{
+        //    if (!Dispatcher.CheckAccess())
+        //    {
+        //        Dispatcher.BeginInvoke(delegadoPintar, new Object[1] { tag });
+        //    }
+        //    else
+        //    {
+        //        pinta(tag);
+        //    }
+        //    return;
+        //}
+
+        private void pintaMarcha(bool bit)
+        {
+            //if (!Dispatcher.CheckAccess())
+            //{
+            //    Dispatcher.BeginInvoke(delPintarMarcha, new Object[1] { bit });
+            //}
+            //else
+            //{
+                if (bit)
+                {
+                    luz_marcha.Fill = new SolidColorBrush(Colors.Green);
+                }
+                else
+                {
+                    luz_marcha.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+                }
+            //}
+              
+        }
+
+        private void pintaParo(bool bit)
         {
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.BeginInvoke(delegadoPintar, new Object[1] { tag });
+                Dispatcher.BeginInvoke(delPintarParo, new Object[1] { bit });
             }
             else
             {
-                pinta(tag);
+                if (bit)
+                {
+                    luz_paro.Fill = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    luz_paro.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+                }
             }
-            return;
+            
         }
 
-        private void pinta(string tag)
+        private void pintaRearme(bool bit)
         {
-            switch (tag)
+            if (!Dispatcher.CheckAccess())
             {
-                case "marcha":
-                    luz_marcha.Fill = new SolidColorBrush(Colors.Green);
-                    break;
-                case "paro":
-                    luz_paro.Fill = new SolidColorBrush(Colors.Red);
-                    break;
-                case "rearme":
+                Dispatcher.BeginInvoke(delPintarRearme, new Object[1] { bit });
+            } else
+            {
+                if (bit)
+                {
                     luz_rearme.Fill = new SolidColorBrush(Colors.Blue);
-                    break;
-
-                default:
-                    break;
-            }
+                }
+                else
+                {
+                    luz_rearme.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+                }
+            } 
         }
 
         private void muestraDatosRecibidos(byte[] datos, int dim)
