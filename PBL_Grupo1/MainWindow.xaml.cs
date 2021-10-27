@@ -61,9 +61,20 @@ namespace PBL_Grupo1
 
         private void despinta(string tag)
         {
-            if (tag == "marcha")
+            switch (tag)
             {
-                luz_marcha.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+                case "marcha":
+                    luz_marcha.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+                    break;
+                case "paro":
+                    luz_paro.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+                    break;
+                case "rearme":
+                    luz_rearme.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+                    break;
+
+                default:
+                    break;
             }
         }
 
@@ -82,9 +93,20 @@ namespace PBL_Grupo1
 
         private void pinta(string tag)
         {
-            if(tag == "marcha")
+            switch (tag)
             {
-                luz_marcha.Fill = new SolidColorBrush(Colors.Green);
+                case "marcha":
+                    luz_marcha.Fill = new SolidColorBrush(Colors.Green);
+                    break;
+                case "paro":
+                    luz_paro.Fill = new SolidColorBrush(Colors.Red);
+                    break;
+                case "rearme":
+                    luz_rearme.Fill = new SolidColorBrush(Colors.Blue);
+                    break;
+
+                default:
+                    break;
             }
         }
 

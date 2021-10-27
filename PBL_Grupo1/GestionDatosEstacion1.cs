@@ -38,12 +38,32 @@ namespace PBL_Grupo1
             imprimirMensajeRecibido(new byte[] { basicModuleInputs, basicModuleOutputs }, bitsbasicModuleInputs.Length);
 
             bool bitMarcha = bitsbasicModuleInputs[0];
+            bool bitParo = bitsbasicModuleInputs[1];
+            bool bitRearme = bitsbasicModuleInputs[3];
 
             if (bitMarcha.Equals(true))
             {
                 pinta("marcha");
             }else {
                 despinta("marcha");
+            }
+
+            if (bitParo)
+            {
+                pinta("paro");
+            }
+            else
+            {
+                despinta("paro");
+            }
+
+            if (bitRearme)
+            {
+                pinta("rearme");
+            }
+            else
+            {
+                despinta("rearme");
             }
 
         }
