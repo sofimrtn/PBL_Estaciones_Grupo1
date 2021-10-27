@@ -156,8 +156,6 @@ namespace PBL_Grupo1
         {
             bool cont = true;
             byte[] data = new byte[100];
-            //byte[] res;
-            //int dimRes;
 
             Thread.Sleep(100);
 

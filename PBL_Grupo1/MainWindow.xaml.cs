@@ -17,6 +17,8 @@ namespace PBL_Grupo1
 {
     public delegate void delegadoMensajes(byte[] datos, int dim);
     public delegate void delegadoProcesar(byte[] datos, int dim);
+    public delegate void delegadoPintar(string tag);
+    public delegate void delegadoDespintar(string tag);
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
@@ -25,6 +27,9 @@ namespace PBL_Grupo1
 
         private delegadoMensajes delegadoImprimeMensajes;
         private delegadoProcesar delegadoProcesarMensaje;
+        private delegadoPintar delegadoPintar;
+        private delegadoDespintar delegadoDespintar;
+
         private GestionDatosEstacion1 gestorEstacion1;
         private Cliente client = null;
         private bool connected = false;
@@ -32,11 +37,55 @@ namespace PBL_Grupo1
         {
             InitializeComponent();
             delegadoImprimeMensajes = new delegadoMensajes(muestraDatosRecibidos);
-            
-            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes);
+            delegadoPintar = new delegadoPintar(pintaDatosRecibidos);
+            delegadoDespintar = new delegadoDespintar(despintaDatosRecibidos);
+
+            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, delegadoPintar, delegadoDespintar);
 
             delegadoProcesarMensaje = new delegadoProcesar(gestorEstacion1.procesar);
 
+        }
+
+        private void despintaDatosRecibidos(string tag)
+        {
+            if (!Dispatcher.CheckAccess())
+            {
+                Dispatcher.BeginInvoke(delegadoDespintar, new Object[1] { tag });
+            }
+            else
+            {
+                despinta(tag);
+            }
+            return;
+        }
+
+        private void despinta(string tag)
+        {
+            if (tag == "marcha")
+            {
+                luz_marcha.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
+            }
+        }
+
+        private void pintaDatosRecibidos(string tag)
+        {
+            if (!Dispatcher.CheckAccess())
+            {
+                Dispatcher.BeginInvoke(delegadoPintar, new Object[1] { tag });
+            }
+            else
+            {
+                pinta(tag);
+            }
+            return;
+        }
+
+        private void pinta(string tag)
+        {
+            if(tag == "marcha")
+            {
+                luz_marcha.Fill = new SolidColorBrush(Colors.Green);
+            }
         }
 
         private void muestraDatosRecibidos(byte[] datos, int dim)
@@ -53,9 +102,11 @@ namespace PBL_Grupo1
 
         private void imprimeMensaje(byte[] datos, int dim)
         {
-            for (int i=0; i<datos.Length; i++)
+            var time24 = DateTime.Now.ToString("HH:mm:ss");
+            txtB_Hex.AppendText(time24 + " ---- ");
+            for (int i = 0; i < datos.Length; i++)
             {
-                txtB_Hex.AppendText(datos[i].ToString("X2") + "h ");
+                txtB_Hex.AppendText(Convert.ToString(datos[i],2) + " " );
             }
             txtB_Hex.AppendText("\n");
 
@@ -94,6 +145,11 @@ namespace PBL_Grupo1
             }
             
             return;
+        }
+
+        private void resetColores()
+        {
+
         }
 
         /**
