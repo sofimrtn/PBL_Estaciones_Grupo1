@@ -7,24 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TabControl Height="353.292" HorizontalAlignment="Left" Margin="12,12,0,0"   
-            Name="tabControl1" VerticalAlignment="Top" Width="752.119">
+        <TabControl Height="353.292" HorizontalAlignment="Left" Margin="531.536,12,0,0"   
+            Name="tabControl1" VerticalAlignment="Top" Width="232.583">
             <TabItem Header="Conexion" Name="Conexion">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="95*"/>
                         <ColumnDefinition Width="651*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Puerto:" HorizontalAlignment="Left" Margin="176,44,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Label Content="Direccion IP:" HorizontalAlignment="Left" Margin="32,44,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Puerto:" HorizontalAlignment="Left" Margin="32,85.01,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Direccion IP:" HorizontalAlignment="Left" Margin="32,26.05,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="txtB_IP" HorizontalAlignment="Left" Height="23" Margin="32,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txtB_Port" HorizontalAlignment="Left" Height="23" Margin="176,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <TextBox x:Name="txtB_IP" HorizontalAlignment="Left" Height="23" Margin="32,57.01,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtB_Port" HorizontalAlignment="Left" Height="23" Margin="32,115.97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
 
-                    <Button x:Name="btn_Conectar" Content="Conectar" HorizontalAlignment="Left" Height="25" Margin="32,114,0,0" VerticalAlignment="Top" Width="93" Click="btn_Conectar_Click" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txtB_Hex" HorizontalAlignment="Left" Height="96" Margin="30,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="695" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btn_Conectar" Content="Conectar" HorizontalAlignment="Left" Height="25" Margin="32,167.861,0,0" VerticalAlignment="Top" Width="93" Click="btn_Conectar_Click" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txtB_Hex" HorizontalAlignment="Left" Height="54.278" Margin="32,243.722,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Grid.ColumnSpan="2"/>
 
-                    <Label Content="Datos recibidos:" HorizontalAlignment="Left" Margin="30,171,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label Content="Datos recibidos:" HorizontalAlignment="Left" Margin="30,212.762,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                 </Grid>
             </TabItem>
@@ -69,6 +69,14 @@
 
         </TabControl>
         <Button x:Name="btn_Salir" Content="Salir" HorizontalAlignment="Left" Height="24.808" Margin="662.795,370.292,0,0" VerticalAlignment="Top" Width="101.324" Click="btn_Salir_Click"/>
+        <Canvas HorizontalAlignment="Left" Height="383" Margin="18,12,0,0" VerticalAlignment="Top" Width="157" Background="DimGray">
+            <Image x:Name="noConexion" Source="/Assets/img/icons/r-Multiply-96.png" Height="38" Canvas.Top="304" Width="38" Canvas.Left="53" />
+            <Image x:Name="conectado" Source="/Assets/img/icons/g-Checkmark-96.png" Height="38" Canvas.Top="304" Width="38" Canvas.Left="53" Visibility="Hidden" />
+            <Image Source="/Assets/img/icons/w-Ethernet On Filled-100.png" Height="41" Width="36" Canvas.Left="111" Canvas.Top="325" />
+            <Image Source="/Assets/img/icons/w-Workstation Filled-100.png" Height="58" Width="49" Canvas.Left="-2" Canvas.Top="307" />
+            <Path Data="M46.596026,366.31126 L112.65235,367.79826" Fill="White" Height="2.487" Canvas.Left="47.695" Stretch="Fill" Stroke="White" Canvas.Top="342.112" Width="71.457" StrokeThickness="4"/>
+
+        </Canvas>
 
     </Grid>
 </Window>

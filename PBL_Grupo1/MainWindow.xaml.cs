@@ -18,7 +18,6 @@ namespace PBL_Grupo1
     public delegate void delegadoMensajes(byte[] datos, int dim);
     public delegate void delegadoProcesar(byte[] datos, int dim);
     public delegate void delegadoPintar(bool tag);
-    public delegate void delegadoDespintar(string tag);
 
 
     /// <summary>
@@ -35,10 +34,7 @@ namespace PBL_Grupo1
         private delegadoPintar delPintarRearme;
         private delegadoPintar delPintaAuto;
 
-
-        private delegadoDespintar delegadoDespintar;
-
-        private List<Delegate> listPintar;
+                private List<Delegate> listPintar;
 
         private GestionDatosEstacion1 gestorEstacion1;
         private Cliente client = null;
@@ -52,8 +48,6 @@ namespace PBL_Grupo1
             delPintarRearme = new delegadoPintar(pintaRearme);
             delPintaAuto = new delegadoPintar(pintaMarcha); //CHECKKK
 
-            delegadoDespintar = new delegadoDespintar(despintaDatosRecibidos);
-
             listPintar = new List<Delegate> {delPintarMarcha, delPintarParo, delPintaAuto, delPintarRearme};
 
             gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, listPintar);
@@ -62,59 +56,22 @@ namespace PBL_Grupo1
 
         }
 
-        private void despintaDatosRecibidos(string tag)
+        private bool checkDelegate(Delegate del, bool bit)
         {
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.BeginInvoke(delegadoDespintar, new Object[1] { tag });
-            }
-            else
+                Dispatcher.BeginInvoke(del, new Object[1] { bit });
+                return false;
+            } else
             {
-                despinta(tag);
-            }
-            return;
-        }
-
-        private void despinta(string tag)
-        {
-            switch (tag)
-            {
-                case "marcha":
-                    luz_marcha.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
-                    break;
-                case "paro":
-                    luz_paro.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
-                    break;
-                case "rearme":
-                    luz_rearme.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
-                    break;
-
-                default:
-                    break;
+                return true;
             }
         }
-
-        //private void pintaDatosRecibidos(string tag)
-        //{
-        //    if (!Dispatcher.CheckAccess())
-        //    {
-        //        Dispatcher.BeginInvoke(delegadoPintar, new Object[1] { tag });
-        //    }
-        //    else
-        //    {
-        //        pinta(tag);
-        //    }
-        //    return;
-        //}
 
         private void pintaMarcha(bool bit)
         {
-            //if (!Dispatcher.CheckAccess())
-            //{
-            //    Dispatcher.BeginInvoke(delPintarMarcha, new Object[1] { bit });
-            //}
-            //else
-            //{
+            if(checkDelegate(delPintarMarcha, bit))
+            {
                 if (bit)
                 {
                     luz_marcha.Fill = new SolidColorBrush(Colors.Green);
@@ -123,17 +80,13 @@ namespace PBL_Grupo1
                 {
                     luz_marcha.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
                 }
-            //}
-              
+            }
+                    
         }
 
         private void pintaParo(bool bit)
         {
-            if (!Dispatcher.CheckAccess())
-            {
-                Dispatcher.BeginInvoke(delPintarParo, new Object[1] { bit });
-            }
-            else
+            if(checkDelegate(delPintarParo, bit))
             {
                 if (bit)
                 {
@@ -149,10 +102,7 @@ namespace PBL_Grupo1
 
         private void pintaRearme(bool bit)
         {
-            if (!Dispatcher.CheckAccess())
-            {
-                Dispatcher.BeginInvoke(delPintarRearme, new Object[1] { bit });
-            } else
+            if (checkDelegate(delPintarRearme, bit))
             {
                 if (bit)
                 {
@@ -208,6 +158,10 @@ namespace PBL_Grupo1
                     btn_Conectar.Content = "Desconectar";
 
                     connected = true;
+                    conectado.Visibility = Visibility.Visible;
+                    noConexion.Visibility = Visibility.Hidden;
+
+
                 }
                 else client = null;
             }
@@ -219,58 +173,11 @@ namespace PBL_Grupo1
                 connected = false;
 
                 btn_Conectar.Content = "Conectar";
+                conectado.Visibility = Visibility.Hidden;
+                noConexion.Visibility = Visibility.Visible;
             }
             
             return;
         }
-
-        private void resetColores()
-        {
-
-        }
-
-        /**
-         * Metodo auxiliar para comprobar que el envío de datos se produce
-         * 
-        **/
-        //private void hello()
-        //{
-        //    byte[] response = new byte[100];
-
-        //    int res;
-
-        //    txtB_Hex.Text = "";
-        //    if (client != null && connected)
-        //    {
-        //        res = client.receiveData(response, response.Length);
-
-        //        if (res > 0)
-        //        {
-        //            txtB_Hex.Clear();
-        //            for (int i = 0; i < res; i++)
-        //            {
-        //                txtB_Hex.AppendText(response[i].ToString("X2") + "h ");
-        //            }
-        //            txtB_Hex.AppendText("\n");
-        //        }
-        //        else if (res == 0)
-        //        {
-        //            MessageBox.Show("No data received");
-        //        }
-        //        else if (res == -1)
-        //        {
-        //            MessageBox.Show("Server has closed connection", "TCP Client error");
-        //            client.closeClient();
-        //            client = null;
-        //            btn_Conectar.Content = "Conectar";
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Unknown error while receiving data", "TCP Client error");
-        //        }
-        //    }
-        //    else
-        //        MessageBox.Show("No client connection", "TCP Client error");
-        //}
     }
 }

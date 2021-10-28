@@ -14,7 +14,7 @@ namespace PBL_Grupo1
     {
         private delegadoMensajes imprimirMensajeRecibido;
         private List<Delegate> pinta;
-        private delegadoDespintar despinta;
+        //private delegadoDespintar despinta;
 
         public GestionDatosEstacion1(delegadoMensajes _datos, List<Delegate> _tag)
         {
