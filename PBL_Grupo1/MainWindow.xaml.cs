@@ -17,7 +17,9 @@ namespace PBL_Grupo1
 {
     public delegate void delegadoMensajes(byte[] datos, int dim);
     public delegate void delegadoProcesar(byte[] datos, int dim);
-    public delegate void delegadoPintar(bool tag);
+    public delegate void delegadoPintar(bool bit);
+
+    public delegate void pintaLuces(bool bit, Ellipse e);
 
 
     /// <summary>
@@ -27,92 +29,59 @@ namespace PBL_Grupo1
     {
         private delegadoMensajes delegadoImprimeMensajes;
         private delegadoProcesar delegadoProcesarMensaje;
+        private pintaLuces delegadoPintaLuces;
 
-
-        private delegadoPintar delPintarMarcha;
-        private delegadoPintar delPintarParo;
-        private delegadoPintar delPintarRearme;
-        private delegadoPintar delPintaAuto;
-
-                private List<Delegate> listPintar;
+        List<Ellipse> luces;
 
         private GestionDatosEstacion1 gestorEstacion1;
         private Cliente client = null;
         private bool connected = false;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            luces = new List<Ellipse> { luz_marcha, luz_paro, luz_auto, luz_rearme, luz_ind0, luz_seta, luz_paletIzq, luz_paletDer,
+                                        luz_oMarchaLuz, luz_oParoLuz, luz_oQ1Luz, luz_oQ2Luz, luz_oCintaDer, luz_oCintaIzq, luz_oCintaSlow, luz_oStopperDown,
+                                        elevadorArriba, elevadorAbajo, separadorCerrado, separadorAbierto, almacenVacio,null,paletOK,frontOK,
+                                        salSubirElev, salBajarElev,salCerrarSep, salAbrirSep,frenoCilindro, null, null, null };// ind0, ind1, ind2, ind3, stopperDown};
+
             delegadoImprimeMensajes = new delegadoMensajes(muestraDatosRecibidos);
-            delPintarMarcha = new delegadoPintar(pintaMarcha);
-            delPintarParo = new delegadoPintar(pintaParo);
-            delPintarRearme = new delegadoPintar(pintaRearme);
-            delPintaAuto = new delegadoPintar(pintaMarcha); //CHECKKK
+            delegadoPintaLuces = new pintaLuces(funcionPintaLuces);
 
-            listPintar = new List<Delegate> {delPintarMarcha, delPintarParo, delPintaAuto, delPintarRearme};
-
-            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, listPintar);
+            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, delegadoPintaLuces, luces);
 
             delegadoProcesarMensaje = new delegadoProcesar(gestorEstacion1.procesar);
 
         }
 
-        private bool checkDelegate(Delegate del, bool bit)
+        private void funcionPintaLuces(bool bit, Ellipse e)
         {
+            if (e == null)
+            {
+                return;
+            }
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.BeginInvoke(del, new Object[1] { bit });
-                return false;
-            } else
-            {
-                return true;
+                Dispatcher.BeginInvoke(delegadoPintaLuces, new Object[2] { bit, e });
             }
+            else
+            {
+                color(e, bit);
+            }
+            return;
         }
 
-        private void pintaMarcha(bool bit)
+        private void color(Ellipse e, bool bit)
         {
-            if(checkDelegate(delPintarMarcha, bit))
+            if (bit)
             {
-                if (bit)
-                {
-                    luz_marcha.Fill = new SolidColorBrush(Colors.Green);
-                }
-                else
-                {
-                    luz_marcha.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
-                }
+                e.Fill = new SolidColorBrush(Colors.Green);
             }
-                    
-        }
-
-        private void pintaParo(bool bit)
-        {
-            if(checkDelegate(delPintarParo, bit))
+            else
             {
-                if (bit)
-                {
-                    luz_paro.Fill = new SolidColorBrush(Colors.Red);
-                }
-                else
-                {
-                    luz_paro.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
-                }
+                e.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
             }
-            
-        }
-
-        private void pintaRearme(bool bit)
-        {
-            if (checkDelegate(delPintarRearme, bit))
-            {
-                if (bit)
-                {
-                    luz_rearme.Fill = new SolidColorBrush(Colors.Blue);
-                }
-                else
-                {
-                    luz_rearme.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFF4F4F5"));
-                }
-            } 
         }
 
         private void muestraDatosRecibidos(byte[] datos, int dim)
@@ -130,7 +99,7 @@ namespace PBL_Grupo1
         private void imprimeMensaje(byte[] datos, int dim)
         {
             var time24 = DateTime.Now.ToString("HH:mm:ss");
-            txtB_Hex.AppendText(time24 + " ---- ");
+            txtB_Hex.AppendText(time24 + " -- ");
             for (int i = 0; i < datos.Length; i++)
             {
                 txtB_Hex.AppendText(Convert.ToString(datos[i],2) + " " );
@@ -179,5 +148,6 @@ namespace PBL_Grupo1
             
             return;
         }
+
     }
 }

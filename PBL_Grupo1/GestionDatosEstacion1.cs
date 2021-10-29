@@ -13,35 +13,62 @@ namespace PBL_Grupo1
     class GestionDatosEstacion1
     {
         private delegadoMensajes imprimirMensajeRecibido;
-        private List<Delegate> pinta;
-        //private delegadoDespintar despinta;
+        private pintaLuces pintarLuces;
+        private List<Ellipse> luces;
 
-        public GestionDatosEstacion1(delegadoMensajes _datos, List<Delegate> _tag)
+        public GestionDatosEstacion1(delegadoMensajes _datos, pintaLuces _delLuces, List<Ellipse> _luces)
         {
             imprimirMensajeRecibido = _datos;
-            pinta = _tag;
-            //despinta = _tag2;
+            luces = _luces;
+            pintarLuces = _delLuces;
         }
 
         public void procesar(byte[] datos, int dim)
         {
-            byte basicModuleOutputs = datos[2];
-            byte basicModuleInputs = datos[3];
+            //BitArray frontCoverOutputs = new BitArray(new byte[] { datos[0] });
+            //BitArray frontCoverInputs = new BitArray(new byte[] { datos[1] });
+            BitArray bitsbasicModuleOutputs = new BitArray(new byte[] { datos[2] });
+            BitArray bitsbasicModuleInputs = new BitArray(new byte[] { datos[3] });
 
-            gestionBasicModule(basicModuleOutputs, basicModuleInputs);
+            //BitArray StopperInputs = new BitArray(new byte[] { datos[4] }); CHECK - no se envía aquí?
 
-        }
+            imprimirMensajeRecibido(new byte[] { datos[2], datos[3] }, 8);
 
-        private void gestionBasicModule(byte basicModuleOutputs, byte basicModuleInputs)
-        {
-            BitArray bitsbasicModuleInputs = new BitArray(new byte[] { basicModuleInputs });
-            imprimirMensajeRecibido(new byte[] { basicModuleInputs, basicModuleOutputs }, bitsbasicModuleInputs.Length);
+            BitArray module1 = Append(bitsbasicModuleInputs, bitsbasicModuleOutputs);
+            //BitArray module2 = Append(frontCoverInputs, frontCoverOutputs);
+            //BitArray estacion1 = Append(module2, module1);
 
-
-            for(int i=0; i<4; i++) //CHECKKK
+            for (int i = 0; i < module1.Count; i++)
             {
-                pinta[i].DynamicInvoke(bitsbasicModuleInputs[i]);
+                pintarLuces(module1[i], luces[i]);
             }
+
         }
+
+        public BitArray Append(BitArray current, BitArray after)
+        {
+            bool[] bools = new bool[current.Count + after.Count];
+            current.CopyTo(bools, 0);
+            after.CopyTo(bools, current.Count);
+            return new BitArray(bools);
+        }
+
+        //public byte[] Slice(byte[] source, int start, int end)
+        //{
+        //    // Handles negative ends.
+        //    if (end < 0)
+        //    {
+        //        end = source.Length + end;
+        //    }
+        //    int len = end - start;
+
+        //    // Return new array.
+        //    byte[] res = new byte[len];
+        //    for (int i = 0; i < len; i++)
+        //    {
+        //        res[i] = source[i + start];
+        //    }
+        //    return res;
+        //}
     }
 }
