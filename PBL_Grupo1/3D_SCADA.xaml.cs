@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Media3D;
 using System.Collections;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace PBL_Grupo1
 {
@@ -25,6 +27,7 @@ namespace PBL_Grupo1
 
     public partial class _3D_SCADA : Window
     {
+        private static Timer timer;
 
         Model3DGroup guardar_carril = null;
         Model3DGroup guardar_pallet_enCarril = null;
@@ -38,9 +41,12 @@ namespace PBL_Grupo1
 
         Storyboard Fcarril = new Storyboard();
 
-        public _3D_SCADA(BitArray bits)
+        BitArray bitsEstacion1;
+
+        public _3D_SCADA()
         {
             InitializeComponent();
+            //bitsEstacion1 = bits;
 
             vacio = new Model3DGroup();
             parar_int = 130;
@@ -56,8 +62,6 @@ namespace PBL_Grupo1
             fDir.Begin();
             fDir.Pause();
 
-
-            procesaDatosEstacion();
 
             Storyboard Fcarril = (Storyboard)FindResource("CARRIL_STORY");
             Fcarril.Begin();
@@ -83,15 +87,35 @@ namespace PBL_Grupo1
             fIzq_color3.Brush = Brushes.Transparent;
             fIzq_color4.Brush = Brushes.Transparent;
 
-        }
 
-        
-        private void procesaDatosEstacion()
-        {
             
-           // Arrancar_cinta_derecha.IsChecked = datosEstacion1[13];
 
         }
+
+        public void setBits(BitArray bits)
+        {
+            this.bitsEstacion1 = bits;
+        }
+
+        private void WindowLoaded(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(procesaDatosEstacion);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+        }
+
+        private void procesaDatosEstacion(object sender, EventArgs e)
+        {
+            if(bitsEstacion1!= null)
+            {
+                palet_extremo_izquierdo.IsChecked = bitsEstacion1[6];
+                bajar_cilindro_elevador.IsChecked = bitsEstacion1[25];
+                subir_cilindro_elevador.IsChecked = bitsEstacion1[24];
+                Arrancar_cinta_derecha.IsChecked = bitsEstacion1[13];
+            }
+        }
+
 
         private void Cilindro_elevador_arriba_Checked(object sender, RoutedEventArgs e)
         {

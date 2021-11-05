@@ -40,6 +40,8 @@ namespace PBL_Grupo1
 
         private BitArray bitsEstacion1;
 
+        private _3D_SCADA scada;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -57,6 +59,8 @@ namespace PBL_Grupo1
 
             delegadoProcesarMensaje = new delegadoProcesar(gestorEstacion1.procesar);
 
+            scada = new _3D_SCADA();
+
         }
 
         private void funcionPintaLuces(bool bit, Ellipse e, BitArray bits)
@@ -72,7 +76,8 @@ namespace PBL_Grupo1
             else
             {
                 color(e, bit);
-                
+                bitsEstacion1 = bits;
+                scada.setBits(bits);
             }
             return;
         }
@@ -156,7 +161,6 @@ namespace PBL_Grupo1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _3D_SCADA scada = new _3D_SCADA(bitsEstacion1);
             scada.Show();
         }
     }
