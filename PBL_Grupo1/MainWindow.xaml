@@ -42,8 +42,8 @@
                         <Ellipse x:Name="luz_oParoLuz" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,26.388,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="luz_oQ1Luz" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,48.275,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="luz_oQ2Luz" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,70.162,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="luz_oCintaDer" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="luz_oCintaIzq" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="luz_oCintaIzq" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="luz_oCintaDer" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="luz_oCintaSlow" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,144.521,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="luz_oStopperDown" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,171.042,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="luz_oMarchaLuz" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,197.563,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
@@ -63,8 +63,8 @@
                         <Ellipse x:Name="elevadorArriba" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,26.388,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="elevadorAbajo" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,48.275,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="separadorCerrado" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,70.162,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="separadorAbierto" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="almacenVacio" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="almacenVacio" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="separadorAbierto" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="paletOK" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,144.521,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="frontOK" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,171.042,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
 
@@ -80,8 +80,8 @@
                         <Ellipse x:Name="salSubirElev" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,26.388,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="salBajarElev" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,48.275,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="salCerrarSep" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,70.162,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="salAbrirSep" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="frenoCilindro" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="frenoCilindro" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="salAbrirSep" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
 
                         <Label Content="subirElev" HorizontalAlignment="Left" Height="25.557" Margin="10,17.718,0,0" VerticalAlignment="Top" Width="62.582"/>
                         <Label Content="bajarElev" HorizontalAlignment="Left" Height="25.557" Margin="10,43.275,0,0" VerticalAlignment="Top" Width="62.582"/>
@@ -133,6 +133,7 @@
             <Path Data="M46.596026,366.31126 L112.65235,367.79826" Fill="White" Height="2.487" Canvas.Left="49.695" Stretch="Fill" Stroke="White" Canvas.Top="385.112" Width="71.457" StrokeThickness="4"/>
 
         </Canvas>
+        <Button Content="Button" HorizontalAlignment="Left" Height="25" Margin="160,465,0,-21" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
 
     </Grid>

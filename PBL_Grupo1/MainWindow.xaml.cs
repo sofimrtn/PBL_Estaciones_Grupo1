@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,8 @@ namespace PBL_Grupo1
     public delegate void delegadoProcesar(byte[] datos, int dim);
     public delegate void delegadoPintar(bool bit);
 
-    public delegate void pintaLuces(bool bit, Ellipse e);
-
+    public delegate void pintaLuces(bool bit, Ellipse e, BitArray bits);
+    
 
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
@@ -37,25 +38,28 @@ namespace PBL_Grupo1
         private Cliente client = null;
         private bool connected = false;
 
+        private BitArray bitsEstacion1;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            luces = new List<Ellipse> { luz_marcha, luz_paro, luz_auto, luz_rearme, luz_ind0, luz_seta, luz_paletIzq, luz_paletDer,
-                                        luz_oMarchaLuz, luz_oParoLuz, luz_oQ1Luz, luz_oQ2Luz, luz_oCintaDer, luz_oCintaIzq, luz_oCintaSlow, luz_oStopperDown,
-                                        elevadorArriba, elevadorAbajo, separadorCerrado, separadorAbierto, almacenVacio,null,paletOK,frontOK,
-                                        salSubirElev, salBajarElev,salCerrarSep, salAbrirSep,frenoCilindro, null, null, null };// ind0, ind1, ind2, ind3, stopperDown};
+            luces = new List<Ellipse> {luz_marcha, luz_paro, luz_auto, luz_rearme, luz_ind0, luz_seta, luz_paletIzq, luz_paletDer,
+                                    luz_oMarchaLuz, luz_oParoLuz, luz_oQ1Luz, luz_oQ2Luz, luz_oCintaDer, luz_oCintaIzq, luz_oCintaSlow, luz_oStopperDown,
+                                    elevadorArriba, elevadorAbajo, separadorCerrado, separadorAbierto, almacenVacio,null,paletOK,frontOK,
+                                    salSubirElev, salBajarElev,salCerrarSep, salAbrirSep,frenoCilindro, null, null, null,
+                                    ind0, ind1, ind2, ind3, null, null, null, stopperDown};
 
             delegadoImprimeMensajes = new delegadoMensajes(muestraDatosRecibidos);
             delegadoPintaLuces = new pintaLuces(funcionPintaLuces);
-
+   
             gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, delegadoPintaLuces, luces);
 
             delegadoProcesarMensaje = new delegadoProcesar(gestorEstacion1.procesar);
 
         }
 
-        private void funcionPintaLuces(bool bit, Ellipse e)
+        private void funcionPintaLuces(bool bit, Ellipse e, BitArray bits)
         {
             if (e == null)
             {
@@ -63,11 +67,12 @@ namespace PBL_Grupo1
             }
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.BeginInvoke(delegadoPintaLuces, new Object[2] { bit, e });
+                Dispatcher.BeginInvoke(delegadoPintaLuces, new Object[3] { bit, e, bits});
             }
             else
             {
                 color(e, bit);
+                
             }
             return;
         }
@@ -149,5 +154,10 @@ namespace PBL_Grupo1
             return;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _3D_SCADA scada = new _3D_SCADA(bitsEstacion1);
+            scada.Show();
+        }
     }
 }

@@ -10,11 +10,12 @@ using System.Windows.Shapes;
 
 namespace PBL_Grupo1
 {
-    class GestionDatosEstacion1
+    public class GestionDatosEstacion1
     {
         private delegadoMensajes imprimirMensajeRecibido;
         private pintaLuces pintarLuces;
         private List<Ellipse> luces;
+
 
         public GestionDatosEstacion1(delegadoMensajes _datos, pintaLuces _delLuces, List<Ellipse> _luces)
         {
@@ -25,22 +26,23 @@ namespace PBL_Grupo1
 
         public void procesar(byte[] datos, int dim)
         {
-            //BitArray frontCoverOutputs = new BitArray(new byte[] { datos[0] });
-            //BitArray frontCoverInputs = new BitArray(new byte[] { datos[1] });
+            BitArray frontCoverOutputs = new BitArray(new byte[] { datos[0] });
+            BitArray frontCoverInputs = new BitArray(new byte[] { datos[1] });
             BitArray bitsbasicModuleOutputs = new BitArray(new byte[] { datos[2] });
             BitArray bitsbasicModuleInputs = new BitArray(new byte[] { datos[3] });
 
-            //BitArray StopperInputs = new BitArray(new byte[] { datos[4] }); CHECK - no se envía aquí?
+            BitArray StopperInputs = new BitArray(new byte[] { datos[4] });
 
             imprimirMensajeRecibido(new byte[] { datos[2], datos[3] }, 8);
 
             BitArray module1 = Append(bitsbasicModuleInputs, bitsbasicModuleOutputs);
-            //BitArray module2 = Append(frontCoverInputs, frontCoverOutputs);
-            //BitArray estacion1 = Append(module2, module1);
+            BitArray module2 = Append(frontCoverInputs, frontCoverOutputs);
+            BitArray aux = Append(module1, module2);
+            BitArray estacion1 = Append(aux, StopperInputs);
 
-            for (int i = 0; i < module1.Count; i++)
+            for (int i = 0; i < estacion1.Count; i++)
             {
-                pintarLuces(module1[i], luces[i]);
+                pintarLuces(estacion1[i], luces[i], estacion1);
             }
 
         }
@@ -53,22 +55,5 @@ namespace PBL_Grupo1
             return new BitArray(bools);
         }
 
-        //public byte[] Slice(byte[] source, int start, int end)
-        //{
-        //    // Handles negative ends.
-        //    if (end < 0)
-        //    {
-        //        end = source.Length + end;
-        //    }
-        //    int len = end - start;
-
-        //    // Return new array.
-        //    byte[] res = new byte[len];
-        //    for (int i = 0; i < len; i++)
-        //    {
-        //        res[i] = source[i + start];
-        //    }
-        //    return res;
-        //}
     }
 }

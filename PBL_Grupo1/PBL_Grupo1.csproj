@@ -63,8 +63,8 @@
       <DependentUpon>SCADA.xaml</DependentUpon>
     </Compile>
     <Page Include="3D_SCADA.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Assets\style\Animation.xaml">
       <Generator>MSBuild:Compile</Generator>
