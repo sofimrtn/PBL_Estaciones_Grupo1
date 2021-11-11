@@ -42,6 +42,7 @@ namespace PBL_Grupo1
         Storyboard Fcarril = new Storyboard();
 
         BitArray bitsEstacion1;
+        List<CheckBox> listaCheckboxes;
 
         public _3D_SCADA()
         {
@@ -87,7 +88,11 @@ namespace PBL_Grupo1
             fIzq_color3.Brush = Brushes.Transparent;
             fIzq_color4.Brush = Brushes.Transparent;
 
-
+            listaCheckboxes = new List<CheckBox> {boton_marcha, boton_paro, null, boton_rearme, sensor_indutivo_0, seta_emergencia, palet_extremo_izquierdo, palet_extremo_direcho,
+                                                                Luz_boton_marcha, Luz_boton_reset, Luz_Q1, Luz_Q2, Arrancar_cinta_derecha, Arrancar_cinta_izquierda, null, stopper_abajo,
+                                                                Cilindro_elevador_arriba, Cilindro_elevador_aabajo, Separador_cierrado,Separador_abierto, Almacen_vacío, null, paler_bien_posicionado, null,
+                                                                subir_cilindro_elevador, bajar_cilindro_elevador, Cerrar_separador, abrir_separador, abrir_freno_cilindro, null, null, null,
+                                                                sensor_indutivo_0, sensor_indutivo_1, sensor_indutivo_2, sensor_indutivo_3, null,null,null, stopper_abajo};
             
 
         }
@@ -109,10 +114,13 @@ namespace PBL_Grupo1
         {
             if(bitsEstacion1!= null)
             {
-                palet_extremo_izquierdo.IsChecked = bitsEstacion1[6];
-                bajar_cilindro_elevador.IsChecked = bitsEstacion1[25];
-                subir_cilindro_elevador.IsChecked = bitsEstacion1[24];
-                Arrancar_cinta_derecha.IsChecked = bitsEstacion1[13];
+                for (int i=0; i<bitsEstacion1.Count; i++)
+                {
+                    if (listaCheckboxes[i] != null)
+                    {
+                        listaCheckboxes[i].IsChecked = bitsEstacion1[i];
+                    }
+                }
             }
         }
 
