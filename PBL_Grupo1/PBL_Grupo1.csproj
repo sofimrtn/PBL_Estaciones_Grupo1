@@ -62,6 +62,9 @@
     <Compile Include="SCADA.xaml.cs">
       <DependentUpon>SCADA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Estacion2_SCADA.xaml.cs">
+      <DependentUpon>Estacion2_SCADA.xaml</DependentUpon>
+    </Compile>
     <Page Include="3D_SCADA.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Estacion2_SCADA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -124,58 +131,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\FrostedGlassBehavior.dll" />
+    <Resource Include="img\g-Checkmark-96.png" />
+    <Resource Include="img\r-Multiply-96.png" />
+    <Resource Include="img\w-Workstation Filled-100.png" />
+    <Resource Include="img\w-Ethernet On Filled-100.png" />
+    <Resource Include="img\img\cam_Xdir.png" />
+    <Resource Include="img\img\cam_XIzq.png" />
+    <Resource Include="img\img\cam_Yabajo.png" />
+    <Resource Include="img\img\cam_Yarrija.png" />
+    <Resource Include="img\img\cam_Zfrente.png" />
+    <Resource Include="img\img\cam_Ztras.png" />
+    <Resource Include="img\img\Deusto.png" />
+    <Resource Include="img\img\home-icon.png" />
+    <Resource Include="img\img\Home_icon_grey.png" />
+    <Resource Include="img\img\view_close.png" />
+    <Resource Include="img\img\view_open.png" />
+    <Resource Include="img\w-Report Card-64.png" />
+    <Resource Include="img\w-Services-64.png" />
+    <Resource Include="img\w-Settings-64.png" />
+    <Resource Include="img\cam_Xdir.png" />
+    <Resource Include="img\cam_XIzq.png" />
+    <Resource Include="img\cam_Yabajo.png" />
+    <Resource Include="img\cam_Yarrija.png" />
+    <Resource Include="img\cam_Zfrente.png" />
+    <Resource Include="img\cam_Ztras.png" />
+    <Resource Include="img\Deusto.png" />
+    <Resource Include="img\home-icon.png" />
+    <Resource Include="img\Home_icon_grey.png" />
+    <Resource Include="img\view_close.png" />
+    <Resource Include="img\view_open.png" />
     <Resource Include="Assets\ico\Apps-scan-monitor.ico" />
-    <Resource Include="Assets\img\icons\b-Add User Male-96.png" />
-    <Resource Include="Assets\img\icons\b-Broken Link-64.png" />
-    <Resource Include="Assets\img\icons\b-Contacts-32.png" />
-    <Resource Include="Assets\img\icons\b-Edit User Male-96.png" />
-    <Resource Include="Assets\img\icons\b-Left_50.png" />
-    <Resource Include="Assets\img\icons\b-Link-50.png" />
-    <Resource Include="Assets\img\icons\b-Link-96.png" />
-    <Resource Include="Assets\img\icons\b-Login-64 Black.png" />
-    <Resource Include="Assets\img\icons\b-Logout Rounded Left-64 Black.png" />
-    <Resource Include="Assets\img\icons\b-Multiply-32.png" />
-    <Resource Include="Assets\img\icons\b-Multiply-64.png" />
-    <Resource Include="Assets\img\icons\b-Reset-32.png" />
-    <Resource Include="Assets\img\icons\b-Reset-64.png" />
-    <Resource Include="Assets\img\icons\b-Right_50.png" />
-    <Resource Include="Assets\img\icons\b-User Groups-96.png" />
-    <Resource Include="Assets\img\icons\bl-Link-64.png" />
-    <Resource Include="Assets\img\icons\bl_Electrical Sensor-32.png" />
-    <Resource Include="Assets\img\icons\bl_Electrical Sensor-64.png" />
-    <Resource Include="Assets\img\icons\bl_Electrical Sensor-96.png" />
-    <Resource Include="Assets\img\icons\g-Checkmark-96.png" />
-    <Resource Include="Assets\img\icons\gr-user-Profil-Image.png" />
-    <Resource Include="Assets\img\icons\r-Broken Link-96.png" />
-    <Resource Include="Assets\img\icons\r-Multiply-96.png" />
-    <Resource Include="Assets\img\icons\w-Add User Male-96.png" />
-    <Resource Include="Assets\img\icons\w-Admin Settings Male-64.png" />
-    <Resource Include="Assets\img\icons\w-Available Updates-32.png" />
-    <Resource Include="Assets\img\icons\w-Available Updates-64.png" />
-    <Resource Include="Assets\img\icons\w-customer-64.png" />
-    <Resource Include="Assets\img\icons\w-Edit User Male-64.png" />
-    <Resource Include="Assets\img\icons\w-Ellipsis Filled-50.png" />
-    <Resource Include="Assets\img\icons\w-Ethernet On Filled-100.png" />
-    <Resource Include="Assets\img\icons\w-Login-64.png" />
-    <Resource Include="Assets\img\icons\w-Logout Rounded Left-64.png" />
-    <Resource Include="Assets\img\icons\w-Manual-64.png" />
-    <Resource Include="Assets\img\icons\w-Menu-64.png" />
-    <Resource Include="Assets\img\icons\w-Ok-64.png" />
-    <Resource Include="Assets\img\icons\w-Report Card-64.png" />
-    <Resource Include="Assets\img\icons\w-Services-64.png" />
-    <Resource Include="Assets\img\icons\w-Settings-32.png" />
-    <Resource Include="Assets\img\icons\w-Settings-48.png" />
-    <Resource Include="Assets\img\icons\w-Settings-64.png" />
-    <Resource Include="Assets\img\icons\w-Toggle On-64.png" />
-    <Resource Include="Assets\img\icons\w-Under Computer-32.png" />
-    <Resource Include="Assets\img\icons\w-User Menu Male-64.png" />
-    <Resource Include="Assets\img\icons\w-Workstation Filled-100.png" />
-    <Resource Include="Assets\img\samples\abstract1.png" />
-    <Resource Include="Assets\img\samples\abstract2.png" />
-    <Resource Include="Assets\img\samples\line-sample.png" />
-    <Resource Include="Assets\img\samples\machineBackground.jpg" />
-    <Resource Include="Assets\img\samples\robotArm.png" />
-    <Resource Include="Assets\img\samples\settingsCark.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\themes\" />

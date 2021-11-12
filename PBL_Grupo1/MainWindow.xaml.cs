@@ -41,6 +41,7 @@ namespace PBL_Grupo1
         private BitArray bitsEstacion1;
 
         private _3D_SCADA scada;
+        private Estacion2_SCADA scada_2;
 
         public MainWindow()
         {
@@ -60,6 +61,7 @@ namespace PBL_Grupo1
             delegadoProcesarMensaje = new delegadoProcesar(gestorEstacion1.procesar);
 
             scada = new _3D_SCADA();
+            scada_2 = new Estacion2_SCADA();
 
         }
 
@@ -123,6 +125,7 @@ namespace PBL_Grupo1
         {
             if (client != null) client.closeClient();
             client = null;
+            scada.Close();
             Close();
         }
 
@@ -162,6 +165,13 @@ namespace PBL_Grupo1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             scada.Show();
+            //scada = new _3D_SCADA();
+        }
+
+        private void estacion2_click(object sender, RoutedEventArgs e)
+        {
+            scada_2.Show();
+            //scada = new _3D_SCADA();
         }
     }
 }

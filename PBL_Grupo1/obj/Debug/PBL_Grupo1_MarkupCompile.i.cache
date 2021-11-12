@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Sofia\estacion1\PBL_Grupo1\obj\Debug\
+D:\Sofia\PBL_Estaciones\PBL_Grupo1\obj\Debug\
 PBL_Grupo1
 none
 false
 DEBUG;TRACE
-D:\Sofia\estacion1\PBL_Grupo1\App.xaml
-61496414203
+D:\Sofia\PBL_Estaciones\PBL_Grupo1\App.xaml
+7-262937696
 1664857973
-102084289379
+11-596444161
 13-1505183044
-3D_SCADA.xaml;Assets\style\Animation.xaml;Assets\style\Style.xaml;MainWindow.xaml;SCADA.xaml;Simple Styles.xaml;
+3D_SCADA.xaml;Assets\style\Animation.xaml;Assets\style\Style.xaml;MainWindow.xaml;SCADA.xaml;Simple Styles.xaml;Estacion2_SCADA.xaml;
 
-True
+False
 

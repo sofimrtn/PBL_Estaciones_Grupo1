@@ -16,7 +16,8 @@
                         <ComboBoxItem >Estacion #2</ComboBoxItem>
                         <ComboBoxItem>Estacion #3</ComboBoxItem>
                     </ComboBox>
-
+                    <Button Content="Visor3D" HorizontalAlignment="Left" Height="25" Margin="182,18,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                    <Button Content="Visor3DE2" HorizontalAlignment="Left" Height="25" Margin="292,18,0,0" VerticalAlignment="Top" Width="75" Click="estacion2_click"/>
                     <Canvas Margin="22,106,439,46">
                         <Ellipse x:Name="luz_marcha" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,26.388,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="luz_paro" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,48.275,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
@@ -72,7 +73,7 @@
                         <Label Content="ElevAbajo" HorizontalAlignment="Left" Height="25.557" Margin="10,43.275,0,0" VerticalAlignment="Top" Width="62.582"/>
                         <Label Content="SepCerr" HorizontalAlignment="Left" Height="26" Margin="10,65,0,0" VerticalAlignment="Top" Width="63"/>
                         <Label Content="SepAbier" HorizontalAlignment="Left" Height="27" Margin="10,87,0,0" VerticalAlignment="Top" Width="63"/>
-                        <Label Content="Sin tapas" HorizontalAlignment="Left" Height="29" Margin="10,110,0,0" VerticalAlignment="Top" Width="63"/>
+                        <Label Content="Con tapas" HorizontalAlignment="Left" Height="29" Margin="10,110,0,0" VerticalAlignment="Top" Width="63"/>
                         <Label Content="paletOK" HorizontalAlignment="Left" Height="26.521" Margin="10,139.394,0,0" VerticalAlignment="Top" Width="62.582"/>
                         <Label Content="frontOK" HorizontalAlignment="Left" Height="26.521" Margin="10,165.915,0,0" VerticalAlignment="Top" Width="62.582"/>
                     </Canvas>
@@ -93,8 +94,8 @@
                         <Ellipse x:Name="ind0" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,26.388,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="ind1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,48.275,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
                         <Ellipse x:Name="ind2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,70.162,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="ind3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
-                        <Ellipse x:Name="stopperDown" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="stopperDown" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,118,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
+                        <Ellipse x:Name="ind3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="16.887" Margin="77.582,92.049,0,0" Stroke="Black" VerticalAlignment="Top" Width="17.444"/>
 
                         <Label Content="Ind0" HorizontalAlignment="Left" Height="25.557" Margin="10,17.718,0,0" VerticalAlignment="Top" Width="62.582"/>
                         <Label Content="Ind1" HorizontalAlignment="Left" Height="25.557" Margin="10,43.275,0,0" VerticalAlignment="Top" Width="62.582"/>
@@ -114,16 +115,16 @@
         </TabControl>
         <Button x:Name="btn_Salir" Content="Salir" HorizontalAlignment="Left" Height="25" Margin="663,465,0,-21" VerticalAlignment="Top" Width="101" Click="btn_Salir_Click"/>
         <Canvas HorizontalAlignment="Left" Height="418" Margin="18,12,0,0" VerticalAlignment="Top" Width="157" Background="DimGray">
-            <Image x:Name="noConexion" Source="/Assets/img/icons/r-Multiply-96.png" Height="38" Canvas.Top="347" Width="38" Canvas.Left="55" />
-            <Image x:Name="conectado" Source="/Assets/img/icons/g-Checkmark-96.png" Height="38" Canvas.Top="347" Width="38" Canvas.Left="55" Visibility="Hidden" />
-            <Image Source="/Assets/img/icons/w-Ethernet On Filled-100.png" Height="41" Width="36" Canvas.Left="113" Canvas.Top="368" />
-            <Image Source="/Assets/img/icons/w-Workstation Filled-100.png" Height="58" Width="49" Canvas.Top="350" />
+            <Image x:Name="noConexion" Source="/img/r-Multiply-96.png" Height="38" Canvas.Top="347" Width="38" Canvas.Left="55" />
+            <Image x:Name="conectado" Source="/img/g-Checkmark-96.png" Height="38" Canvas.Top="347" Width="38" Canvas.Left="55" Visibility="Hidden" />
+            <Image Source="/img/w-Ethernet On Filled-100.png" Height="41" Width="36" Canvas.Left="113" Canvas.Top="368" />
+            <Image Source="/img/w-Workstation Filled-100.png" Height="58" Width="49" Canvas.Top="350" />
 
             <Label Content="Puerto:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Canvas.Left="10" Canvas.Top="85"/>
             <Label Content="Direccion IP:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White" Canvas.Left="10" Canvas.Top="26"/>
 
-            <TextBox x:Name="txtB_IP" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Canvas.Left="10" Canvas.Top="57"/>
-            <TextBox x:Name="txtB_Port" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Canvas.Left="10" Canvas.Top="116"/>
+            <TextBox x:Name="txtB_IP" Text="10.172.19.119" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Canvas.Left="10" Canvas.Top="57"/>
+            <TextBox x:Name="txtB_Port" Text="2000" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Canvas.Left="10" Canvas.Top="116"/>
 
             <Button x:Name="btn_Conectar" Content="Conectar" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="93" Click="btn_Conectar_Click" Grid.ColumnSpan="2" Canvas.Left="10" Canvas.Top="162"/>
             <TextBox x:Name="txtB_Hex" HorizontalAlignment="Left" Height="60" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Canvas.Left="10" Canvas.Top="259"/>
@@ -133,7 +134,7 @@
             <Path Data="M46.596026,366.31126 L112.65235,367.79826" Fill="White" Height="2.487" Canvas.Left="49.695" Stretch="Fill" Stroke="White" Canvas.Top="385.112" Width="71.457" StrokeThickness="4"/>
 
         </Canvas>
-        <Button Content="Button" HorizontalAlignment="Left" Height="25" Margin="160,465,0,-21" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        
 
 
     </Grid>
