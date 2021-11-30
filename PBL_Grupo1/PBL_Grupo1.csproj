@@ -58,6 +58,9 @@
     <Compile Include="3D_SCADA.xaml.cs">
       <DependentUpon>3D_SCADA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Estacion3_SCADA.xaml.cs">
+      <DependentUpon>Estacion3_SCADA.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GestionDatosEstacion1.cs" />
     <Compile Include="SCADA.xaml.cs">
       <DependentUpon>SCADA.xaml</DependentUpon>
@@ -76,6 +79,10 @@
     <Page Include="Assets\style\Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Estacion3_SCADA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
