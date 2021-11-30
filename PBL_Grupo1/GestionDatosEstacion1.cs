@@ -18,10 +18,11 @@ namespace PBL_Grupo1
         private List<Ellipse> lucesEstacion2;
 
 
-        public GestionDatosEstacion1(delegadoMensajes _datos, pintaLuces _delLuces, List<Ellipse> _luces)
+        public GestionDatosEstacion1(delegadoMensajes _datos, pintaLuces _delLuces, List<Ellipse> _luces, List<Ellipse> _luces2)
         {
             imprimirMensajeRecibido = _datos;
             lucesEstacion1 = _luces;
+            lucesEstacion2 = _luces2;
             pintarLuces = _delLuces;
         }
 
@@ -50,7 +51,7 @@ namespace PBL_Grupo1
 
             for (int i = 0; i < estacion1.Count; i++)
             {
-                pintarLuces(estacion1[i], lucesEstacion1[i], estacion1);
+                pintarLuces(estacion1[i], lucesEstacion1[i], estacion1, 1);
             }
         }
 
@@ -58,13 +59,13 @@ namespace PBL_Grupo1
         private void Estacion2(byte[] datos)
         {
             //TODO
-            BitArray bitsbasicModule_2_Outputs = new BitArray(new byte[] { datos[2] });
-            BitArray bitsbasicModule_2_Inputs = new BitArray(new byte[] { datos[3] });
+            BitArray bitsbasicModule_2_Outputs = new BitArray(new byte[] { datos[6] });
+            BitArray bitsbasicModule_2_Inputs = new BitArray(new byte[] { datos[7] });
 
-            BitArray measuringOutputs = new BitArray(new byte[] { datos[0] });
-            BitArray measuringInputs = new BitArray(new byte[] { datos[1] });
+            BitArray measuringOutputs = new BitArray(new byte[] { datos[8] });
+            BitArray measuringInputs = new BitArray(new byte[] { datos[9] });
 
-            BitArray StopperInputs = new BitArray(new byte[] { datos[5] });
+            BitArray StopperInputs = new BitArray(new byte[] { datos[11] });
 
             BitArray module1_2 = Append(bitsbasicModule_2_Inputs, bitsbasicModule_2_Outputs);
             BitArray module2_2 = Append(measuringInputs, measuringOutputs);
@@ -74,7 +75,7 @@ namespace PBL_Grupo1
 
             for (int i = 0; i < estacion2.Count; i++)
             {
-                pintarLuces(estacion2[i], lucesEstacion2[i], estacion2);
+                pintarLuces(estacion2[i], lucesEstacion2[i], estacion2, 2);
             }
 
         }

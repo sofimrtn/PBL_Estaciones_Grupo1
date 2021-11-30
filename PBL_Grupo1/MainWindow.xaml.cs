@@ -20,8 +20,8 @@ namespace PBL_Grupo1
     public delegate void delegadoProcesar(byte[] datos, int dim);
     public delegate void delegadoPintar(bool bit);
 
-    public delegate void pintaLuces(bool bit, Ellipse e, BitArray bits);
-    
+    public delegate void pintaLuces(bool bit, Ellipse e, BitArray bits, int estacion);
+
 
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
@@ -33,12 +33,15 @@ namespace PBL_Grupo1
         private pintaLuces delegadoPintaLuces;
 
         List<Ellipse> luces;
+        List<Ellipse> luces2;
 
         private GestionDatosEstacion1 gestorEstacion1;
         private Cliente client = null;
         private bool connected = false;
 
         private BitArray bitsEstacion1;
+        private BitArray bitsEstacion2;
+        private BitArray bitsEstacion3;
 
         private _3D_SCADA scada;
         private Estacion2_SCADA scada_2;
@@ -53,10 +56,12 @@ namespace PBL_Grupo1
                                     salSubirElev, salBajarElev,salCerrarSep, salAbrirSep,frenoCilindro, null, null, null,
                                     ind0, ind1, ind2, ind3, null, null, null, stopperDown};
 
+            luces2 = new List<Ellipse> { };
+
             delegadoImprimeMensajes = new delegadoMensajes(muestraDatosRecibidos);
             delegadoPintaLuces = new pintaLuces(funcionPintaLuces);
-   
-            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, delegadoPintaLuces, luces);
+
+            gestorEstacion1 = new GestionDatosEstacion1(delegadoImprimeMensajes, delegadoPintaLuces, luces, luces2);
 
             delegadoProcesarMensaje = new delegadoProcesar(gestorEstacion1.procesar);
 
@@ -65,7 +70,7 @@ namespace PBL_Grupo1
 
         }
 
-        private void funcionPintaLuces(bool bit, Ellipse e, BitArray bits)
+        private void funcionPintaLuces(bool bit, Ellipse e, BitArray bits, int estacion)
         {
             if (e == null)
             {
@@ -73,13 +78,27 @@ namespace PBL_Grupo1
             }
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.BeginInvoke(delegadoPintaLuces, new Object[3] { bit, e, bits});
+                Dispatcher.BeginInvoke(delegadoPintaLuces, new Object[3] { bit, e, bits });
             }
             else
             {
                 color(e, bit);
-                bitsEstacion1 = bits;
-                scada.setBits(bits);
+                if (estacion == 1)
+                {
+                    bitsEstacion1 = bits;
+                    scada.setBits(bits);
+                }
+                else if (estacion == 2)
+                {
+                    bitsEstacion2 = bits;
+                    scada_2.setBits(bits);
+                }
+                else
+                {
+                    bitsEstacion3 = bits;
+                    //scada.setBits(bits);
+                }
+
             }
             return;
         }
@@ -100,8 +119,9 @@ namespace PBL_Grupo1
         {
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.BeginInvoke(delegadoImprimeMensajes, new Object[2] {datos,dim });
-            } else
+                Dispatcher.BeginInvoke(delegadoImprimeMensajes, new Object[2] { datos, dim });
+            }
+            else
             {
                 imprimeMensaje(datos, dim);
             }
@@ -114,7 +134,7 @@ namespace PBL_Grupo1
             txtB_Hex.AppendText(time24 + " -- ");
             for (int i = 0; i < datos.Length; i++)
             {
-                txtB_Hex.AppendText(Convert.ToString(datos[i],2) + " " );
+                txtB_Hex.AppendText(Convert.ToString(datos[i], 2) + " ");
             }
             txtB_Hex.AppendText("\n");
 
@@ -129,7 +149,7 @@ namespace PBL_Grupo1
             Close();
         }
 
-        
+
         private void btn_Conectar_Click(object sender, RoutedEventArgs e)
         {
             if (!connected)
@@ -158,7 +178,7 @@ namespace PBL_Grupo1
                 conectado.Visibility = Visibility.Hidden;
                 noConexion.Visibility = Visibility.Visible;
             }
-            
+
             return;
         }
 
@@ -171,7 +191,7 @@ namespace PBL_Grupo1
         private void estacion2_click(object sender, RoutedEventArgs e)
         {
             scada_2.Show();
-            //scada = new _3D_SCADA();
+            //scada_2 = new Estacion2_SCADA();
         }
     }
 }

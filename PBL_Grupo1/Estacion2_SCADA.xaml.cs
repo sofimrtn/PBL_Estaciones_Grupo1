@@ -46,8 +46,8 @@ namespace PBL_Grupo1
         List<CheckBox> listaCheckboxes;
 
         double X_Scroll;
-        double Y_Scroll;
-        double Z_Scroll;
+        double Y_Scroll= 100;
+        double Z_Scroll= 250;
 
         public Estacion2_SCADA()
         {
@@ -94,9 +94,9 @@ namespace PBL_Grupo1
             //fIzq_color4.Brush = Brushes.Transparent;
 
             listaCheckboxes = new List<CheckBox> {boton_marcha, boton_paro, selector_manual_auto, boton_rearme, sensor_indutivo_0, seta_emergencia, palet_extremo_izquierdo, palet_extremo_direcho,
-                                                                Luz_boton_marcha, Luz_boton_reset, Luz_Q1, Luz_Q2, Arrancar_cinta_derecha, Arrancar_cinta_izquierda, null, stopper_abajo,
-                                                                Cilindro_elevador_arriba, Cilindro_elevador_aabajo, Separador_cierrado,Separador_abierto, Almacen_vacío, null, paler_bien_posicionado, Hay_pallet,
-                                                                subir_cilindro_elevador, bajar_cilindro_elevador, Cerrar_separador, abrir_separador, abrir_freno_cilindro, null, null, null,
+                                                                Luz_boton_marcha, Luz_boton_reset, Luz_Q1, Luz_Q2, Arrancar_cinta_derecha, Arrancar_cinta_izquierda, Estabelecer_velocidade_baja, stopper_abajo,
+                                                                Pieza_en_Posicion, null, MediaAltura1_Q1, MediaAltura1_Q2,MediaAltura2_Q1, MediaAltura2_Q2, null, null,
+                                                                //subir_cilindro_elevador, bajar_cilindro_elevador, Cerrar_separador, abrir_separador, abrir_freno_cilindro, null, null, null,
                                                                 sensor_indutivo_0, sensor_indutivo_1, sensor_indutivo_2, sensor_indutivo_3, null,null,null, stopper_abajo};
 
 
@@ -293,13 +293,12 @@ namespace PBL_Grupo1
 
         private void cam_Ycima_Click(object sender, RoutedEventArgs e)
         {
-            X_Scroll = X_Scroll + 2;
             Cam_X_angle.Angle = X_Scroll;
+            X_Scroll = X_Scroll + 2;
         }
 
         private void cam_XIzq_Click(object sender, RoutedEventArgs e)
-        {
-
+        { 
             Y_Scroll = Y_Scroll - 2;
             Cam_Y_angle.Angle = Y_Scroll;
 
@@ -327,9 +326,9 @@ namespace PBL_Grupo1
 
         private void center_Cam_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            cam_Z.OffsetZ = 0;
+            cam_Z.OffsetZ = 250;
             Cam_X_angle.Angle = 0;
-            Cam_Y_angle.Angle = 0;
+            Cam_Y_angle.Angle = 90;
         }
         void timer_Tick(object sender, EventArgs e)
         {
@@ -373,9 +372,9 @@ namespace PBL_Grupo1
 
         private void TOP_Click(object sender, RoutedEventArgs e)
         {
-            cam_Z.OffsetZ = 0;
+            cam_Z.OffsetZ = 200;
             Cam_X_angle.Angle = -70;
-            Cam_Y_angle.Angle = 30;
+            Cam_Y_angle.Angle = 20;
         }
 
         private void BOTTOM_Click(object sender, RoutedEventArgs e)
