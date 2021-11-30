@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:PBL_Grupo1"
         mc:Ignorable="d"
         Loaded="WindowLoaded"
-        Closing="Window_Closing" 
         Closed="Window_Closed"
         Title="ESTACION2" Height="587.833" Width="1107.8">
     <Window.Background>
@@ -45,7 +44,7 @@
 
         <!-- Exported with Viewer3ds and Ab3d.Reader3ds. See www.ab4d.com for more WPF and Silverlight tools. -->
         <!-- Created with evaluation version for evaluation purpose only! NOT FOR COMMERCIAL USE! -->
-        <Viewport3D xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="MainViewport3D">
+        <Viewport3D xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="MainViewport3D" Margin="135,50,326,64" Grid.RowSpan="2">
             <Viewport3D.Camera>
                 <!-- Scene camera -->
                 <PerspectiveCamera FieldOfView="45" NearPlaneDistance="0.13" FarPlaneDistance="Infinity" Position="324.8,208.65,104.72" LookDirection="-0.78,-0.35,-0.52" UpDirection="-0.29,0.94,-0.19"/>
@@ -1563,7 +1562,7 @@
                     <ImageBrush ImageSource="/img/cam_Zfrente.png"/>
                 </Button.Background>
             </Button>
-            <Ellipse x:Name="Center_Cam" MouseDown="center_Cam_MouseDown" Fill="#FFF4F4F5" Stroke="Black" RenderTransformOrigin="0.638,0.56" Margin="42,34,38,342" Grid.Row="1" Grid.Column="1"/>
+            <Ellipse x:Name="Center_Cam" MouseDown="center_Cam_MouseDown" Fill="#FFF4F4F5" Stroke="Black" RenderTransformOrigin="0.638,0.56" Margin="40,34,38,352" Grid.Row="1" Grid.Column="1"/>
             <Button Click="Conveyour_view_Click" x:Name="Conveyour_view" Height="40" VerticalAlignment="Top" Margin="-2,253,62,0" Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/img/view_close.png"/>

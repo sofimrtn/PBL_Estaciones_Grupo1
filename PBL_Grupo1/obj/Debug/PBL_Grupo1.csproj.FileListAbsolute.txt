@@ -138,3 +138,5 @@ C:\Users\msame\source\repos\PBL_Estaciones_Grupo1_Reciente\PBL_Grupo1\obj\Debug\
 C:\Users\msame\source\repos\PBL_Estaciones_Grupo1_Reciente\PBL_Grupo1\obj\Debug\PBL_Grupo1.Properties.Resources.resources
 C:\Users\msame\source\repos\PBL_Estaciones_Grupo1_Reciente\PBL_Grupo1\obj\Debug\PBL_Grupo1.csproj.GenerateResource.cache
 C:\Users\msame\source\repos\PBL_Estaciones_Grupo1_Reciente\PBL_Grupo1\obj\Debug\PBL_Grupo1.csproj.CoreCompileInputs.cache
+C:\Users\msame\source\repos\PBL_Estaciones_Grupo1_Reciente\PBL_Grupo1\obj\Debug\Estacion3_SCADA.g.cs
+C:\Users\msame\source\repos\PBL_Estaciones_Grupo1_Reciente\PBL_Grupo1\obj\Debug\Estacion3_SCADA.baml
